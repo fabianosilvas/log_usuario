@@ -1,0 +1,75 @@
+﻿@model IEnumerable<log_usuario_logado.Models.reatb001_resultado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VR_OBJETIVO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VR_REALIZADO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PC_REALIZADO) <br />
+
+        </th>
+        <th></th>
+    </tr>
+
+    @*@functions {
+        string CorPercentualRealize(double? ValorPercentual)
+        {
+            string Cor = null;
+
+            double teste = 100;
+
+            switch (true)
+            {
+                case (ValorPercentual >= 100):
+                    Cor = "rgb(51,122,183)"; //AZUL
+                    break;
+                case (ValorPercentual >= 90 && ValorPercentual < 100):
+                    Cor = "rgb(60,118,61)"; //VERDE
+                    break;
+                case (ValorPercentual >= 80 && ValorPercentual < 90):
+                    Cor = "rgb(255,153,0)"; //AMARELO
+                    break;
+                default:
+                    Cor = "rgb(206,60,49)"; //VERMELHO
+            }
+            return Cor;
+        }
+    }*@
+
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VR_OBJETIVO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VR_REALIZADO)
+        </td>
+        @*<td style="color: @CorPercentualRealize(item.PC_REALIZADO);">*@
+
+        <td style="color: @(item.PC_REALIZADO >= 100 ? "Blue" : "Red")">
+            @Html.DisplayFor(modelItem => item.PC_REALIZADO)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.CO_UNIDADE }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CO_UNIDADE }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CO_UNIDADE })
+        </td>
+    </tr>
+    }
+
+</table>

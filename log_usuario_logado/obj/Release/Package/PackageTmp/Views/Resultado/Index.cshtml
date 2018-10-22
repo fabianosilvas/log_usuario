@@ -1,0 +1,45 @@
+﻿@model IEnumerable<log_usuario_logado.Models.reatb001_resultado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VR_OBJETIVO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VR_REALIZADO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PC_REALIZADO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VR_OBJETIVO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VR_REALIZADO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PC_REALIZADO)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CO_UNIDADE }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CO_UNIDADE }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CO_UNIDADE })
+        </td>
+    </tr>
+}
+
+</table>

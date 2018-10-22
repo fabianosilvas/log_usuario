@@ -1,0 +1,73 @@
+﻿@model IEnumerable<log_usuario_logado.Areas.SISLOG.Models.logtb001_log_sessao>
+
+@{
+    ViewBag.Title = "Sessões";
+}
+
+<h2>Sessões</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.dh_acesso)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.co_sessao)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.dh_ultima_requisicao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dh_saida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qt_tempo_sessao)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.de_navegador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.de_resolucao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.de_sistema_operacional)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.dh_acesso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_sessao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dh_ultima_requisicao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dh_saida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.qt_tempo_sessao)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.de_navegador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.de_resolucao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.de_sistema_operacional)
+        </td>
+    </tr>
+}
+
+</table>

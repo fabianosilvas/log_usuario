@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET </h1>
+    <p class="lead">Página com recursos para desenvolvimento WEB: log de acesso, funções para devolver cores...</p>
+    <p><a href="#" class="btn btn-primary btn-lg">Saiba mais &raquo;</a></p>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Escreve URL (@@Url.Action )</h2>
+        <p>
+            <strong>/SISLOG/Registra/Acesso?de_pagina= </strong><br />
+            <strong>@@Url.Action("Acesso", "Registra", new { area = "SISLOG" }) </strong><br /> @Url.Action("Acesso", "Registra", new { area = "SISLOG" }) <br /><br />
+            <strong>@@Html.Raw(@@Url.Action("Acesso", "Registra", new { area = "SISLOG", usuario = "Teste", name = "Name" }))</strong><br /> @Html.Raw(@Url.Action("Acesso", "Registra", new { area = "SISLOG", usuario = "Teste", name = "Name" })) <br /><br />
+            <strong>@@Url.Action("Acesso", "Registra", new { area = "SISLOG", de_pagina = "valor", deResolucaoTela = "valor", noSistemaOperacional = "valor" })</strong><br /> @Url.Action("Acesso", "Registra", new { area = "SISLOG", de_pagina = "valor", deResolucaoTela = "valor", noSistemaOperacional = "valor" }) <br /><br />
+
+        </p>
+    </div>
+   
+</div>
