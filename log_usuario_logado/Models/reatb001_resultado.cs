@@ -1,5 +1,6 @@
 namespace log_usuario_logado.Models
 {
+    using log_usuario_logado.Uteis;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -16,5 +17,34 @@ namespace log_usuario_logado.Models
         public double? VR_REALIZADO { get; set; }
 
         public double? PC_REALIZADO { get; set; }
+
+        //Recupera nome da Classe CSS para o percentual atingido do realize.Caixa
+        public string CorPercentualRealize(double pcAtingido)
+        {
+            return Realize.CorPercentualRealize(pcAtingido);
+        }
+
+        //Recupera nome da Classe CSS (com background) para o percentual atingido do realize.Caixa
+        public string CorPercentualRealize(double pcAtingido, bool backGround)
+        {
+            return Realize.CorPercentualRealize(pcAtingido, backGround);
+        }
+
+
+        public string CorNumeroZero(double numero)
+        {
+            return Realize.CorNumeroZero(numero);
+        }
+        
+        public string CorNegativoPotisivo(double numero)
+        {
+            return Realize.CorNegativoPotisivo(numero);
+        }
+
+        public string CorNegativoPotisivo_Inverso(double numero)
+        {
+            return Realize.CorNegativoPotisivo_Inverso(numero);
+        }
+
     }
 }

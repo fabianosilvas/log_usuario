@@ -39,6 +39,83 @@
 };
 
 
+//function CorPercentualRealize(ValorPercentual) {
+//    var Cor = null;
+
+//    switch (true) {
+//        case (ValorPercentual >= 100):
+//            Cor = "rgb(51,122,183)" //AZUL
+//            break;
+//        case (ValorPercentual >= 90 &&  ValorPercentual < 100):
+//            Cor = "rgb(60,118,61)" //VERDE
+//            break;
+//        case (ValorPercentual >= 80 &&  ValorPercentual < 90):
+//            Cor = "rgb(255,153,0)" //AMARELO
+//            break;
+//        default:
+//            Cor = "rgb(206,60,49)" //VERMELHO
+//    }
+//    alert(Cor);
+//}
+
+//CorPercentualRealize(80);
+
+/*
+function CorPercentualRealize(ValorPercentual)
+SELECT CASE TRUE
+CASE  ValorPercentual >= 100 Cor = "rgb(51,122,183)" 'AZUL
+CASE  ValorPercentual >= 90 AND  ValorPercentual < 100  Cor = "rgb(60,118,61)" 'VERDE
+CASE  ValorPercentual >= 80 AND  ValorPercentual < 90  Cor = "rgb(255,153,0)" 'AMARELO
+CASE ELSE  Cor = "rgb(206,60,49)" 'VERMELHO
+END SELECT
+response.write(Cor)
+end function 
+
+    function CorPercentualRealizeTransparencia(ValorPercentual)
+SELECT CASE TRUE
+CASE  ValorPercentual >= 100 Cor = "rgba(12,120,196,0.70)" 'AZUL
+CASE  ValorPercentual >= 90 AND  ValorPercentual < 100  Cor = "rgba(136,204,0,0.70)" 'VERDE
+CASE  ValorPercentual >= 80 AND  ValorPercentual < 90  Cor = "rgba(255,204,51,0.70)" 'AMARELO
+CASE ELSE  Cor = "rgba(255,102,102,0.70)" 'VERMELHO
+END SELECT
+response.write(Cor)
+end function 
+
+    function CorNomeRealize(nomeCor)
+SELECT CASE TRUE
+CASE  nomeCor = "AZUL" Cor = "rgb(51,122,183)" 'AZUL
+CASE  nomeCor = "VERDE"  Cor = "rgb(60,118,61)" 'VERDE
+CASE  nomeCor = "AMARELO"  Cor = "rgb(255,153,0)" 'AMARELO
+CASE  nomeCor = "VERMELHO" Cor = "rgb(206,60,49)" 'VERMELHO
+END SELECT
+response.write(Cor)
+end function
+
+
+	function CorNegativoPotisivo(Numero)
+SELECT CASE TRUE
+CASE  Numero < 0 Cor = "rgb(206,60,49)"  'VERMELHO
+CASE ELSE  Cor = "black" 'PRETO 
+END SELECT
+response.write(Cor)
+end function
+
+	function CorNegativoPotisivo_Inverso(Numero)
+SELECT CASE TRUE
+CASE  Numero <= 0 Cor = "rgb(51,122,183)" 'AZUL
+CASE ELSE  Cor = "rgb(206,60,49)"  'VERMELHO
+END SELECT
+response.write(Cor)
+end function
+
+    function CorNumeroZero(Numero)
+SELECT CASE TRUE
+CASE  Numero = 0 Cor = "#cccccc"  'CINZA
+CASE ELSE  Cor = "black" 'PRETO 
+END SELECT
+response.write(Cor)
+end function
+*/
 
 
 //alert("OK");

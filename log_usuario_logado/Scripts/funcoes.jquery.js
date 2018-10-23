@@ -39,26 +39,26 @@
 };
 
 
-function CorPercentualRealize(ValorPercentual) {
-    var Cor = null;
+//function CorPercentualRealize(ValorPercentual) {
+//    var Cor = null;
 
-    switch (true) {
-        case (ValorPercentual >= 100):
-            Cor = "rgb(51,122,183)" //AZUL
-            break;
-        case (ValorPercentual >= 90 &&  ValorPercentual < 100):
-            Cor = "rgb(60,118,61)" //VERDE
-            break;
-        case (ValorPercentual >= 80 &&  ValorPercentual < 90):
-            Cor = "rgb(255,153,0)" //AMARELO
-            break;
-        default:
-            Cor = "rgb(206,60,49)" //VERMELHO
-    }
-    alert(Cor);
-}
+//    switch (true) {
+//        case (ValorPercentual >= 100):
+//            Cor = "rgb(51,122,183)" //AZUL
+//            break;
+//        case (ValorPercentual >= 90 &&  ValorPercentual < 100):
+//            Cor = "rgb(60,118,61)" //VERDE
+//            break;
+//        case (ValorPercentual >= 80 &&  ValorPercentual < 90):
+//            Cor = "rgb(255,153,0)" //AMARELO
+//            break;
+//        default:
+//            Cor = "rgb(206,60,49)" //VERMELHO
+//    }
+//    alert(Cor);
+//}
 
-CorPercentualRealize(80);
+//CorPercentualRealize(80);
 
 /*
 function CorPercentualRealize(ValorPercentual)

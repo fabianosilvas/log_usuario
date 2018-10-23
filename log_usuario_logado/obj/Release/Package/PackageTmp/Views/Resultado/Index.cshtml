@@ -18,12 +18,14 @@
             @Html.DisplayNameFor(model => model.VR_REALIZADO)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PC_REALIZADO)
+            @Html.DisplayNameFor(model => model.PC_REALIZADO) <br />
+
         </th>
-        <th></th>
+      
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.VR_OBJETIVO)
@@ -31,15 +33,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.VR_REALIZADO)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.PC_REALIZADO)
+            <span style="width:40px;" class="badge @item.CorPercentualRealize(item.PC_REALIZADO ?? 0, true) " >  @Html.DisplayFor(modelItem => item.PC_REALIZADO) </span>
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CO_UNIDADE }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CO_UNIDADE }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CO_UNIDADE })
-        </td>
+     
     </tr>
-}
+    }
 
 </table>

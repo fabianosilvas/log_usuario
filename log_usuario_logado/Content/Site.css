@@ -22,3 +22,44 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+/*########################  CORES PARA FAIXAS DE PERCENTUAIS DO REALIZA.CAIXA   ##########################*/
+.realize-faixa-azul {
+    color: rgb(51,122,183);
+}
+
+.realize-faixa-verde {
+    color: rgb(60,118,61);
+}
+
+.realize-faixa-amarela {
+    color: rgb(255,153,0);
+}
+
+.realize-faixa-vermelha {
+    color: rgb(206,60,49);
+}
+
+
+.realize-faixa-azul-bg {
+    color: rgb(51,122,183);
+    background-color: rgba(12,120,196,0.50);
+}
+
+.realize-faixa-verde-bg {
+    color: rgb(60,118,61);
+    background-color: rgba(136,204,0,0.50);
+}
+
+.realize-faixa-amarela-bg {
+    color: rgb(255,153,0);
+    background-color: rgba(255,204,51,0.50);
+}
+
+.realize-faixa-vermelha-bg {
+    background-color: rgba(255,102,102,0.50);
+    color: rgb(206,60,49);
+}
+
+/*########################  CORES PARA FAIXAS DE PERCENTUAIS DO REALIZA.CAIXA  - FIM ##########################*/
