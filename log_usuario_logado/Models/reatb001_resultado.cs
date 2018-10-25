@@ -18,13 +18,13 @@ namespace log_usuario_logado.Models
 
         public double? PC_REALIZADO { get; set; }
 
-        //Recupera nome da Classe CSS para o percentual atingido do realize.Caixa
+        
         public string CorPercentualRealize(double pcAtingido)
         {
             return Realize.CorPercentualRealize(pcAtingido);
         }
 
-        //Recupera nome da Classe CSS (com background) para o percentual atingido do realize.Caixa
+       
         public string CorPercentualRealize(double pcAtingido, bool backGround)
         {
             return Realize.CorPercentualRealize(pcAtingido, backGround);

@@ -7,6 +7,7 @@ namespace log_usuario_logado.Uteis
 {
     public class Realize
     {
+        //Recupera nome da Classe CSS para o percentual atingido do realize.Caixa
         public static string CorPercentualRealize(double pcAtingido)
         {
             string noClasseCss = null;
@@ -31,9 +32,8 @@ namespace log_usuario_logado.Uteis
             return noClasseCss;
         }
 
-
-
-
+        
+        //Recupera nome da Classe CSS (com background) para o percentual atingido do realize.Caixa
         public static string CorPercentualRealize(double pcAtingido, bool backGround)
         {
             string noClasseCss = null;

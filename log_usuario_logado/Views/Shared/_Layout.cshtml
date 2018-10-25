@@ -30,17 +30,22 @@
                             <li> @Html.ActionLink("Histórico de Sessões", "Sessoes", "Acesso", new { area = "SISLOG" }, new { })</li>
                             <li role="separator" class="divider"></li>
                             <li class="dropdown-header">ACESSOS</li>
-                            <li> @Html.ActionLink("Histórico de Acessos", "Acessos", "Acesso", new {area = "SISLOG" }, new { })</li>
+                            <li> @Html.ActionLink("Histórico de Acessos", "Acessos", "Acesso", new { area = "SISLOG" }, new { })</li>
 
                         </ul>
                     </li>
                 </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a>Usuários Online: <strong>@HttpContext.Current.Application["ContadorAcessos"].ToString()</strong></a> </li> @*Configurações no Arquivo Global.asax*@
-                    <li><a>ID Sessão: <strong>@Session.SessionID</strong></a></li>
-                    <li>@Html.ActionLink("Sair", "AbandonarSessao", "Acesso", new { area = "SISLOG" }, new { })</li>
-                </ul>
+                @{
+                    var urlAtual = Request.CurrentExecutionFilePath;
+                    if (urlAtual.Contains("Home"))
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a>Usuários Online: <strong>@HttpContext.Current.Application["ContadorAcessos"].ToString()</strong></a> </li> @*Configurações no Arquivo Global.asax*@
+                            <li><a>ID Sessão: <strong>@Session.SessionID</strong></a></li>
+                            <li>@Html.ActionLink("Sair", "AbandonarSessao", "Acesso", new { area = "SISLOG" }, new { })</li>
+                        </ul>
+                    }
+                }
             </div>
         </div>
     </div>
