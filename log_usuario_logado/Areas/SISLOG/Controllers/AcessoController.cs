@@ -111,6 +111,93 @@ namespace log_usuario_logado.Areas.SISLOG.Controllers
         }
 
 
+
+
+        public static int UsuariosOnline()
+        {
+            int qtOnline = 0;
+
+            //if (System.Web.HttpContext.Current.Application["ContadorAcessos"] != null)
+            //{
+            //    qtOnline = (int)System.Web.HttpContext.Current.Application["ContadorAcessos"];
+            //}
+
+            using (SISLOGContexto db = new SISLOGContexto())
+            {
+                var dhRequisicao = DateTime.Now;
+                var dhRequisicaoAnterior = dhRequisicao.AddHours(-2);
+                qtOnline = db.logtb002_log_acesso.Where(w => w.dh_acesso >= dhRequisicaoAnterior && w.dh_acesso <= dhRequisicao).GroupBy(x => x.co_sessao).Select(x => x.FirstOrDefault()).Count();
+            }
+                     
+            return qtOnline;
+        }
+
+
+        public static int UsuariosOnline(string dePagina)
+        {
+            int qtOnline = 0;
+
+            using (SISLOGContexto db = new SISLOGContexto())
+            {
+                var dhRequisicao = DateTime.Now;
+                var dhRequisicaoAnterior = dhRequisicao.AddHours(-2);
+                qtOnline = db.logtb002_log_acesso.Where(c => c.de_pagina.Contains(dePagina)).Where(w => w.dh_acesso >= dhRequisicaoAnterior && w.dh_acesso <= dhRequisicao).GroupBy(x => x.co_sessao).Select(x => x.FirstOrDefault()).Count();
+            }
+
+            return qtOnline;
+        }
+
+
+
+        public static int QuantidadeAcessos(bool acessoUnico)
+        {
+            int qtAcessos = 0;
+
+            if (acessoUnico)
+            {
+                using (SISLOGContexto db = new SISLOGContexto())
+                {
+                    qtAcessos = db.logtb002_log_acesso.GroupBy(x => x.co_sessao).Select(x => x.FirstOrDefault()).Count();
+                }
+            }
+            else
+            {
+                using (SISLOGContexto db = new SISLOGContexto())
+                {
+                    qtAcessos = db.logtb002_log_acesso.Count();
+                }
+            }
+
+            return qtAcessos;
+        }
+
+
+
+        public static int QuantidadeAcessos(string dePagina, bool acessoUnico)
+        {
+            int qtAcessos = 0;
+
+            if (acessoUnico)
+            {
+                using (SISLOGContexto db = new SISLOGContexto())
+                {
+                    qtAcessos = db.logtb002_log_acesso.Where(c => c.de_pagina.Contains(dePagina)).GroupBy(x => x.co_sessao).Select(x => x.FirstOrDefault()).Count();
+                }
+            } else
+            {
+                using (SISLOGContexto db = new SISLOGContexto())
+                {
+                    qtAcessos = db.logtb002_log_acesso.Where(c => c.de_pagina.Contains(dePagina)).Count();
+                }
+            }
+           
+            return qtAcessos;
+        }
+
+
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -120,4 +207,7 @@ namespace log_usuario_logado.Areas.SISLOG.Controllers
             base.Dispose(disposing);
         }
     }
+
+
+
 }
