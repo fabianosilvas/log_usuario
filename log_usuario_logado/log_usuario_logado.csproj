@@ -156,8 +156,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\SISLOG\Controllers\AcessoController.cs" />
+    <Compile Include="Areas\SISLOG\Controllers\ErrosController.cs" />
     <Compile Include="Areas\SISLOG\Models\logtb001_log_sessao.cs" />
     <Compile Include="Areas\SISLOG\Models\logtb002_log_acesso.cs" />
+    <Compile Include="Areas\SISLOG\Models\logtb003_log_erro.cs" />
     <Compile Include="Areas\SISLOG\Models\SISLOGContexto.cs" />
     <Compile Include="Areas\SISLOG\SISLOGAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -165,9 +167,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\logtb001_log_sessao.cs" />
-    <Compile Include="Models\logtb002_log_acesso.cs" />
-    <Compile Include="Models\Modelo.cs" />
     <Compile Include="Models\RealizadoContexto.cs" />
     <Compile Include="Models\reatb001_resultado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,6 +192,10 @@
     <Content Include="Scripts\funcoes.jquery.js" />
     <Content Include="Areas\SISLOG\Views\Acesso\Sessoes.cshtml" />
     <Content Include="Areas\SISLOG\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\SISLOG\Views\Erros\Erro404.cshtml" />
+    <Content Include="Areas\SISLOG\Views\Erros\Erro500.cshtml" />
+    <Content Include="Areas\SISLOG\Views\Erros\Erro401.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\Folder - Release - Delete All.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -205,7 +208,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -214,12 +219,12 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Resultado\Index.cshtml" />
+    <Content Include="Views\Resultado\NotImplemented.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

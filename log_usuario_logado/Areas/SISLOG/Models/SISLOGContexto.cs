@@ -12,8 +12,9 @@ namespace log_usuario_logado.Areas.SISLOG.Models
         {
         }
 
-        public virtual DbSet<logtb001_log_sessao> logtb001_log_sessao { get; set; }
-        public virtual DbSet<logtb002_log_acesso> logtb002_log_acesso { get; set; }
+        public virtual DbSet<logtb001_log_sessao> Logtb001_log_sessao { get; set; }
+        public virtual DbSet<logtb002_log_acesso> Logtb002_log_acesso { get; set; }
+        public virtual DbSet<logtb003_log_erro> logtb003_log_erro { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

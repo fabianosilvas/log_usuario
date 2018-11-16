@@ -18,12 +18,12 @@ namespace log_usuario_logado.Areas.SISLOG.Controllers
 
         public ActionResult Sessoes()
         {
-            return View(db.logtb001_log_sessao.ToList());
+            return View(db.Logtb001_log_sessao.ToList());
         }
 
         public ActionResult Acessos()
         {
-            return View(db.logtb002_log_acesso.ToList());
+            return View(db.Logtb002_log_acesso.ToList());
         }
 
         
@@ -50,44 +50,50 @@ namespace log_usuario_logado.Areas.SISLOG.Controllers
 
             DateTime dh_requisicao = DateTime.Now;
 
-            //VERIFICA SE SESSÃO EXISTE, SE NÃO EXISTIR INSERE NOVO REGISTRO, CASO EXISTA EXCLUI HORÁRIO DA SAIDA DA SESSÃO E ATUALIZA HORARIO DA ÚLTIMA REQUISICAO.
-            int sessaoEhExistente = db.logtb001_log_sessao.Where(w => w.co_sessao == Session.SessionID).Count();
-            if (sessaoEhExistente == 0)
+            using (SISLOGContexto db = new SISLOGContexto())
             {
-                logtb001_log_sessao novaSessao = new logtb001_log_sessao
+                //VERIFICA SE SESSÃO EXISTE, SE NÃO EXISTIR INSERE NOVO REGISTRO, CASO EXISTA EXCLUI HORÁRIO DA SAIDA DA SESSÃO E ATUALIZA HORARIO DA ÚLTIMA REQUISICAO.
+                int sessaoEhExistente = db.Logtb001_log_sessao.Where(w => w.co_sessao == Session.SessionID).Count();
+                if (sessaoEhExistente == 0)
+                {
+                    logtb001_log_sessao novaSessao = new logtb001_log_sessao
+                    {
+                        dh_acesso = dh_requisicao,
+                        dh_ultima_requisicao = dh_requisicao,
+                        co_sessao = Session.SessionID,
+                        no_usuario = Request.ServerVariables["LOGON_USER"],
+                        de_navegador = Request.Browser.Browser,
+                        de_resolucao = de_resolucao,
+                        de_sistema_operacional = de_sistema_operacional,
+                        de_user_agent = Request.ServerVariables["HTTP_USER_AGENT"],
+                        nu_ip = Request.UserHostAddress // Request.ServerVariables["REQUEST_ADDR"]
+                    };
+                    db.Logtb001_log_sessao.Add(novaSessao);
+                }
+                else
+                {
+                    var atualizaSessao = db.Logtb001_log_sessao.Where(w => w.co_sessao == Session.SessionID).First();
+                    atualizaSessao.dh_ultima_requisicao = dh_requisicao;
+                    atualizaSessao.dh_saida = null;
+                    atualizaSessao.qt_tempo_sessao = null;
+                }
+
+
+                //GRAVA LOG DE ACESSO À PAGINA
+                logtb002_log_acesso novoAcesso = new logtb002_log_acesso
                 {
                     dh_acesso = dh_requisicao,
-                    dh_ultima_requisicao = dh_requisicao,
                     co_sessao = Session.SessionID,
-                    no_usuario = Request.ServerVariables["LOGON_USER"],
-                    de_navegador = Request.Browser.Browser,
-                    de_resolucao = de_resolucao,
-                    de_sistema_operacional = de_sistema_operacional,
-                    de_user_agent = Request.ServerVariables["HTTP_USER_AGENT"]
+                    de_pagina = de_pagina,
+                    de_pagina_origem_requisicao = de_pagina_origem_requisicao //Request.ServerVariables["HTTP_REFERER"] 
                 };
-                db.logtb001_log_sessao.Add(novaSessao);
+                db.Logtb002_log_acesso.Add(novoAcesso);
                 db.SaveChanges();
             }
-            else
-            {
-                var atualizaSessao = db.logtb001_log_sessao.Where(w => w.co_sessao == Session.SessionID).First();
-                atualizaSessao.dh_ultima_requisicao = dh_requisicao;
-                atualizaSessao.dh_saida = null;
-                atualizaSessao.qt_tempo_sessao = null;
-                db.SaveChanges();
-            }
-           
 
-            //GRAVA LOG DE ACESSO À PAGINA
-            logtb002_log_acesso novoAcesso = new logtb002_log_acesso
-            {
-                dh_acesso = dh_requisicao,
-                co_sessao = Session.SessionID,
-                de_pagina = de_pagina,
-                de_pagina_origem_requisicao = de_pagina_origem_requisicao //Request.ServerVariables["HTTP_REFERER"] 
-            };
-            db.logtb002_log_acesso.Add(novoAcesso);
-            db.SaveChanges();
+
+
+           
         }
 
 
@@ -97,7 +103,7 @@ namespace log_usuario_logado.Areas.SISLOG.Controllers
 
             //ATUALIZA DADOS DA SESSAO
             var dhSaida = DateTime.Now;
-            var atualizaRegistros = dbSaida.logtb001_log_sessao.Where(w => w.co_sessao == idSessao).First();
+            var atualizaRegistros = dbSaida.Logtb001_log_sessao.Where(w => w.co_sessao == idSessao).First();
             atualizaRegistros.dh_saida = dhSaida;
             atualizaRegistros.qt_tempo_sessao = dhSaida - atualizaRegistros.dh_acesso;
             dbSaida.SaveChanges();
@@ -126,7 +132,7 @@ namespace log_usuario_logado.Areas.SISLOG.Controllers
             {
                 var dhRequisicao = DateTime.Now;
                 var dhRequisicaoAnterior = dhRequisicao.AddHours(-2);
-                qtOnline = db.logtb002_log_acesso.Where(w => w.dh_acesso >= dhRequisicaoAnterior && w.dh_acesso <= dhRequisicao).GroupBy(x => x.co_sessao).Select(x => x.FirstOrDefault()).Count();
+                qtOnline = db.Logtb002_log_acesso.Where(w => w.dh_acesso >= dhRequisicaoAnterior && w.dh_acesso <= dhRequisicao).GroupBy(x => x.co_sessao).Select(x => x.FirstOrDefault()).Count();
             }
                      
             return qtOnline;
@@ -141,7 +147,7 @@ namespace log_usuario_logado.Areas.SISLOG.Controllers
             {
                 var dhRequisicao = DateTime.Now;
                 var dhRequisicaoAnterior = dhRequisicao.AddHours(-2);
-                qtOnline = db.logtb002_log_acesso.Where(c => c.de_pagina.Contains(dePagina)).Where(w => w.dh_acesso >= dhRequisicaoAnterior && w.dh_acesso <= dhRequisicao).GroupBy(x => x.co_sessao).Select(x => x.FirstOrDefault()).Count();
+                qtOnline = db.Logtb002_log_acesso.Where(c => c.de_pagina.Contains(dePagina)).Where(w => w.dh_acesso >= dhRequisicaoAnterior && w.dh_acesso <= dhRequisicao).GroupBy(x => x.co_sessao).Select(x => x.FirstOrDefault()).Count();
             }
 
             return qtOnline;
@@ -157,14 +163,14 @@ namespace log_usuario_logado.Areas.SISLOG.Controllers
             {
                 using (SISLOGContexto db = new SISLOGContexto())
                 {
-                    qtAcessos = db.logtb002_log_acesso.GroupBy(x => x.co_sessao).Select(x => x.FirstOrDefault()).Count();
+                    qtAcessos = db.Logtb002_log_acesso.GroupBy(x => x.co_sessao).Select(x => x.FirstOrDefault()).Count();
                 }
             }
             else
             {
                 using (SISLOGContexto db = new SISLOGContexto())
                 {
-                    qtAcessos = db.logtb002_log_acesso.Count();
+                    qtAcessos = db.Logtb002_log_acesso.Count();
                 }
             }
 
@@ -181,13 +187,13 @@ namespace log_usuario_logado.Areas.SISLOG.Controllers
             {
                 using (SISLOGContexto db = new SISLOGContexto())
                 {
-                    qtAcessos = db.logtb002_log_acesso.Where(c => c.de_pagina.Contains(dePagina)).GroupBy(x => x.co_sessao).Select(x => x.FirstOrDefault()).Count();
+                    qtAcessos = db.Logtb002_log_acesso.Where(c => c.de_pagina.Contains(dePagina)).GroupBy(x => x.co_sessao).Select(x => x.FirstOrDefault()).Count();
                 }
             } else
             {
                 using (SISLOGContexto db = new SISLOGContexto())
                 {
-                    qtAcessos = db.logtb002_log_acesso.Where(c => c.de_pagina.Contains(dePagina)).Count();
+                    qtAcessos = db.Logtb002_log_acesso.Where(c => c.de_pagina.Contains(dePagina)).Count();
                 }
             }
            

@@ -8,11 +8,11 @@ namespace log_usuario_logado.Models
     public partial class RealizadoContexto : DbContext
     {
         public RealizadoContexto()
-            : base("name=DB5599_STAGE")
+            : base("name=admbd")
         {
         }
 
-        public virtual DbSet<reatb001_resultado> reatb001_resultado { get; set; }
+        public virtual DbSet<Reatb001_resultado> Reatb001_resultado { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

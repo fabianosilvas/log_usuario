@@ -1,4 +1,4 @@
-﻿@model IEnumerable<log_usuario_logado.Models.reatb001_resultado>
+﻿@model IEnumerable<log_usuario_logado.Models.Reatb001_resultado>
 
 @{
     ViewBag.Title = "Index";
@@ -12,33 +12,49 @@
 <table class="table">
     <tr>
         <th>
+            #
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CO_UNIDADE)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.VR_OBJETIVO)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.VR_REALIZADO)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PC_REALIZADO) <br />
-
+            @Html.DisplayNameFor(model => model.PC_REALIZADO)
         </th>
-      
+
     </tr>
+
+    @{
+        int numeroLinha = 1;
+    }
 
     @foreach (var item in Model)
     {
+
     <tr>
+        <td>
+            @numeroLinha
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CO_UNIDADE)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.VR_OBJETIVO)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.VR_REALIZADO)
         </td>
-
         <td>
-            <span style="width:40px;" class="badge @item.CorPercentualRealize(item.PC_REALIZADO ?? 0, true) " >  @Html.DisplayFor(modelItem => item.PC_REALIZADO) </span>
+            @Html.DisplayFor(modelItem => item.PC_REALIZADO)
         </td>
-     
+
     </tr>
+        numeroLinha ++;
     }
 
 </table>

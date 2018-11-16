@@ -73,6 +73,7 @@ D:\Fabiano\Documents\Projetos Git\log_usuario_logado\log_usuario_logado\obj\Debu
 D:\Fabiano\Documents\Projetos Git\log_usuario_logado\log_usuario_logado\obj\Debug\log_usuario_logado.csproj.CopyComplete
 D:\Fabiano\Documents\Projetos Git\log_usuario_logado\log_usuario_logado\obj\Debug\log_usuario_logado.dll
 D:\Fabiano\Documents\Projetos Git\log_usuario_logado\log_usuario_logado\obj\Debug\log_usuario_logado.pdb
+D:\Fabiano\Documents\Projetos Git\log_usuario\log_usuario\log_usuario_logado\obj\Debug\log_usuario_logado.csproj.CoreCompileInputs.cache
 D:\Fabiano\Documents\Projetos Git\log_usuario\log_usuario\log_usuario_logado\bin\ApplicationInsights.config
 D:\Fabiano\Documents\Projetos Git\log_usuario\log_usuario\log_usuario_logado\bin\log_usuario_logado.dll.config
 D:\Fabiano\Documents\Projetos Git\log_usuario\log_usuario\log_usuario_logado\bin\log_usuario_logado.dll
@@ -143,8 +144,6 @@ D:\Fabiano\Documents\Projetos Git\log_usuario\log_usuario\log_usuario_logado\bin
 D:\Fabiano\Documents\Projetos Git\log_usuario\log_usuario\log_usuario_logado\bin\Microsoft.AI.WindowsServer.xml
 D:\Fabiano\Documents\Projetos Git\log_usuario\log_usuario\log_usuario_logado\bin\Microsoft.AI.Web.xml
 D:\Fabiano\Documents\Projetos Git\log_usuario\log_usuario\log_usuario_logado\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Fabiano\Documents\Projetos Git\log_usuario\log_usuario\log_usuario_logado\obj\Debug\log_usuario_logado.csprojAssemblyReference.cache
-D:\Fabiano\Documents\Projetos Git\log_usuario\log_usuario\log_usuario_logado\obj\Debug\log_usuario_logado.csproj.CoreCompileInputs.cache
 D:\Fabiano\Documents\Projetos Git\log_usuario\log_usuario\log_usuario_logado\obj\Debug\log_usuario_logado.csproj.CopyComplete
 D:\Fabiano\Documents\Projetos Git\log_usuario\log_usuario\log_usuario_logado\obj\Debug\log_usuario_logado.dll
 D:\Fabiano\Documents\Projetos Git\log_usuario\log_usuario\log_usuario_logado\obj\Debug\log_usuario_logado.pdb

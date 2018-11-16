@@ -7,7 +7,7 @@ namespace log_usuario_logado.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class reatb001_resultado
+    public class Reatb001_resultado
     {
         [Key]
         public double CO_UNIDADE { get; set; }

@@ -18,8 +18,7 @@ namespace log_usuario_logado.Controllers
             ViewBag.QtUsuarioOnlinePagina = AcessoController.UsuariosOnline("Home");
             ViewBag.QtAcessosPaginaTotal = AcessoController.QuantidadeAcessos("Home", false);
             ViewBag.QtAcessosPaginaUnicos = AcessoController.QuantidadeAcessos("Home", true);
-
-
+            
             return View();
         }
 

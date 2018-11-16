@@ -30,17 +30,28 @@
                             <li> @Html.ActionLink("Histórico de Sessões", "Sessoes", "Acesso", new { area = "SISLOG" }, new { })</li>
                             <li role="separator" class="divider"></li>
                             <li class="dropdown-header">ACESSOS</li>
-                            <li> @Html.ActionLink("Histórico de Acessos", "Acessos", "Acesso", new {area = "SISLOG" }, new { })</li>
+                            <li> @Html.ActionLink("Histórico de Acessos", "Acessos", "Acesso", new { area = "SISLOG" }, new { })</li>
 
                         </ul>
                     </li>
                 </ul>
+                @{
+                    var urlAtual = Request.CurrentExecutionFilePath;
+                    if (urlAtual.Contains("Home") || urlAtual.Contains("Contact"))
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a title="@ViewBag.QtUsuarioOnlineSite usuários online no site, na última hora.">Online Site: <strong>@ViewBag.QtUsuarioOnlineSite</strong></a> </li>
+                            <li><a title="@ViewBag.QtUsuarioOnlinePagina usuários online nesta página, na última hora.">Online Página: <strong>@ViewBag.QtUsuarioOnlinePagina</strong></a> </li>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a>Usuários Online: <strong>@HttpContext.Current.Application["ContadorAcessos"].ToString()</strong></a> </li> @*Configurações no Arquivo Global.asax*@
-                    <li><a>ID Sessão: <strong>@Session.SessionID</strong></a></li>
-                    <li>@Html.ActionLink("Sair", "AbandonarSessao", "Acesso", new { area = "SISLOG" }, new { })</li>
-                </ul>
+                            <li><a title="@ViewBag.QtAcessosSiteTotal acessos ao site. @ViewBag.QtAcessosSiteUnicos acessos únicos.">Acessos Site: <strong>@ViewBag.QtAcessosSiteTotal</strong></a> </li>
+                            <li><a title="@ViewBag.QtAcessosPaginaTotal acessos nesta página. @ViewBag.QtAcessosPaginaUnicos acessos únicos.">Acessos Página: <strong>@ViewBag.QtAcessosPaginaTotal</strong></a> </li>
+                    
+                            <li><a>ID Sessão: <strong>@Session.SessionID</strong></a></li>
+                            <li>@Html.ActionLink("Sair", "AbandonarSessao", "Acesso", new { area = "SISLOG" }, new { })</li>
+
+                        </ul>
+                    }
+                }
             </div>
         </div>
     </div>

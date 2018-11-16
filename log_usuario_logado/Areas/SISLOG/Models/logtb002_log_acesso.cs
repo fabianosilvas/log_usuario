@@ -9,16 +9,13 @@ namespace log_usuario_logado.Areas.SISLOG.Models
     public partial class logtb002_log_acesso
     {
         [Key]
-        [Column(Order = 0)]
+        public int id_registro { get; set; }
+
         public DateTime dh_acesso { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
         [StringLength(50)]
         public string co_sessao { get; set; }
-
-        [Key]
-        [Column(Order = 2)]
+        
         [StringLength(500)]
         public string de_pagina { get; set; }
 
